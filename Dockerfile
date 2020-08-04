@@ -19,8 +19,9 @@ LABEL org.label-schema.description="Website Evidence Collector running in a tiny
       org.label-schema.license="EUPL-1.2"
 
 # Installs latest Chromium (77) package.
-RUN apk add --no-cache \
-      chromium~=80.0.3987 \
+RUN apk update && \
+      apk add --no-cache \
+      chromium>=80.0.3987 \
       nss \
       freetype \
       freetype-dev \
@@ -57,6 +58,8 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 
 RUN yarn global add file:/opt/website-evidence-collector --prefix /home/collector
 
+
+RUN chmod a+w /output
 # Let Puppeteer use system Chromium
 ENV PUPPETEER_EXECUTABLE_PATH /usr/bin/chromium-browser
 
@@ -66,4 +69,5 @@ ENV PATH="/home/collector/bin:/opt/testssl.sh-3.0:${PATH}"
 # Configure default command in Docker container
 ENTRYPOINT ["/home/collector/bin/website-evidence-collector"]
 WORKDIR /
-VOLUME /output
+#VOLUME /output
+

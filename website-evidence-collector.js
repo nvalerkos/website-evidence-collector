@@ -656,5 +656,17 @@ var refs_regexp = new RegExp(`^(${uri_refs_stripped.join('|')})\\b`, 'i');
     if (argv.output)  {
       fs.writeFileSync(path.join(argv.output, 'inspection.html'), html_dump);
     }
+
+  console.log("Get the files from container with: ");
+  console.log("docker cp website-evidence-collector:/output .");
+await sleep(10000000)
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+} 
+  console.log("Ending.");
+
+
   }
 })();

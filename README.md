@@ -121,6 +121,19 @@ Please find a collection of frequently asked questions with answers in [FAQ.md](
 - https://www.npmjs.com/package/promised-hooks
 - https://www.npmjs.com/package/grappling-hook
 
+
+## Issue with output folder
+
+To remedy with the problem I had with files, 
+
+	docker build . -t website-evidence-collector:latest
+	docker run --rm -it --name website-evidence-collector  --cap-add=SYS_ADMIN  website-evidence-collector:latest  https://www.example.com
+	#copy the files afterwards when it says so.
+	docker cp website-evidence-collector:/output .
+
+
+
+
 ## Contributors
 
 - Robert Riemann (European Data Protection Supervisor, initial author)
